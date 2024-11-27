@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio numero 1</title>
+</head>
+
+<body>
+    <!-- 1. Cambiar el contenido de una celda en una tabla
+Dada una tabla con un `id="miTabla"`, escribe un script que cambie el contenido de la
+primera celda de la primera fila a "Hola". -->
+
+    <table id="miTabla">
+        <tr>
+            <td>Celda 1</td>
+            <td>Celda 2</td>
+        </tr>
+    </table>
+    <script>
+        let tabla = document.querySelector("#miTabla");
+        tabla.getElementsByTagName("td")[0].textContent = "Hola";
+    </script>
+</body>
+
+</html>

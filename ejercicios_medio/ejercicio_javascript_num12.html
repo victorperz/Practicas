@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio numero 12</title>
+</head>
+
+<body>
+    <!-- 12. Validar el formato de un correo electrónico
+    Escribe un script que valide si un correo electrónico ingresado en un campo de texto es
+    válido al hacer clic en un botón.
+    HTML -->
+    <input type="text" id="email" placeholder="Escribe tu correo" />
+    <button onclick="validarCorreo()">Validar</button>
+    <div id="resultado"></div>
+    <script>
+        const email = document.querySelector("#email");
+        const divResultado = document.querySelector("#resultado");
+        function validarCorreo() {
+            let validar = 0;
+            let isEmail = false;
+            console.log(isEmail);
+            emails = Array.from(email.value);
+            emails.forEach(mail => {
+                if (mail === "@") {
+                    validar++;
+                } else if (mail === "." && validar === 1) {
+                    isEmail = true;
+                    return;
+                }
+            });
+            console.log(isEmail);
+            if (isEmail) {
+                alert(`El correo electronico ${email.value} ES valido`);
+            } else {
+                alert(`El correo electronico ${email.value} NO es valido`);
+            }
+        }
+    </script>
+</body>
+
+</html>

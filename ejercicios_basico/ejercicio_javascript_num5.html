@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio numero 5</title>
+</head>
+
+<body>
+    <!-- 5. Validar un campo vacío
+    Dado un formulario con un campo de texto con `id="email"`, escribe un script que
+    muestre una alerta si el campo está vacío cuando se haga clic en un botón.
+    HTML -->
+    <form>
+        <input type="text" id="email" placeholder="Escribe tu email" />
+        <button type="button" onclick="validarEmail()">Validar</button>
+    </form>
+    <script>
+        function validarEmail() {
+            let email = document.querySelector("#email");
+            if (email.value.trim() === "")
+                alert("El campo email está vacio");
+        }
+    </script>
+</body>
+
+</html>

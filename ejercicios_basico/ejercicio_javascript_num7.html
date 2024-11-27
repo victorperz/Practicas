@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio numero 7</title>
+</head>
+
+<body>
+    <!-- 7. Mostrar el contenido de una celda específica
+    Escribe un script que muestre el contenido de la celda en la primera fila y segunda
+    columna de una tabla con `id="miTabla"`.
+    HTML -->
+    <table id="miTabla" border="1">
+        <tr>
+            <td>Celda 1</td>
+            <td>Celda 2</td>
+        </tr>
+    </table>
+    <button onclick="mostrarCelda()">Mostrar Celda</button>
+    <script>
+        let tabla = document.querySelector("#miTabla");
+        console.log(tabla.rows[0].cells[1].textContent);
+    </script>
+</body>
+
+</html>

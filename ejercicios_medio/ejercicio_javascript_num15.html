@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio numero 15</title>
+</head>
+
+<body>
+    <!-- 15. Resaltar palabras clave en un texto
+    Escribe un script que resalte todas las palabras coincidentes con un texto ingresado en
+    un campo de búsqueda dentro de un párrafo.
+    HTML -->
+    <input type="text" id="busqueda" placeholder="Buscar..." oninput="resaltarPalabras()" />
+    <p id="texto">El sol brilla en el cielo azul mientras los pájaros
+        cantan.</p>
+    <script>
+        const texto = document.querySelector("#busqueda");
+        const parrafo = document.querySelector("#texto");
+        const contenido = parrafo.textContent;
+
+        function resaltarPalabras() {
+            const textoIngresado = texto.value.trim();
+            if (textoIngresado === "") {
+                return;
+            }
+            const regex = new RegExp(`(${textoIngresado})`, "gi");
+            nuevoContenido = contenido.replace(regex, "<mark>$1</mark>");
+            parrafo.innerHTML = nuevoContenido;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio numero 13</title>
+</head>
+
+<body>
+    <!-- 13. Ordenar filas de una tabla al hacer clic en el encabezado
+    Crea un script que permita ordenar las filas de una tabla al hacer clic en el encabezado.
+    Ordena alfabéticamente por la columna correspondiente.
+    HTML -->
+    <table id="miTabla" border="1">
+        <thead>
+            <tr>
+                <th onclick="ordenarTabla(0)">Nombre</th>
+                <th onclick="ordenarTabla(1)">Edad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Juan</td>
+                <td>60</td>
+            </tr>
+            <tr>
+                <td>Ana</td>
+                <td>30</td>
+            </tr>
+            <tr>
+                <td>María</td>
+                <td>22</td>
+            </tr>
+            <tr>
+                <td>Lisa</td>
+                <td>27</td>
+            </tr>
+            <tr>
+                <td>Blaqui</td>
+                <td>23</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        function ordenarTabla(columna) {
+            const table = document.querySelector("#miTabla");
+            const bodyTable = document.querySelector("tbody");
+            const filas = Array.from(bodyTable.rows);
+            filas.sort((filaA, filaB) => {
+
+                const celdA = filaA.cells[columna].textContent.trim();
+                const celdB = filaB.cells[columna].textContent.trim();
+
+                return celdA.localeCompare(celdB);
+            });
+            console.log(filas);
+            filas.forEach(fila => bodyTable.appendChild(fila));
+        }
+    </script>
+</body>
+
+</html>

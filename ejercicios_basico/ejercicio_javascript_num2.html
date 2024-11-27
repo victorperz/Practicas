@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio numero 2</title>
+</head>
+
+<body>
+    <!-- 2. Añadir una nueva fila a una tabla
+Dada una tabla con un `id="miTabla"`, escribe un script para añadir una nueva fila con
+dos celdas que digan "Nueva Celda 1" y "Nueva Celda 2".
+HTML -->
+    <table id="miTabla" border="1">
+        <tr>
+            <td>Celda 1</td>
+            <td>Celda 2</td>
+        </tr>
+    </table>
+    <script>
+        let tabla = document.querySelector("#miTabla");
+        let nuevaFila = tabla.insertRow();
+        nuevaFila.insertCell(0).textContent = "Nueva Celda 1";
+        nuevaFila.insertCell(1).textContent = "Nueva Celda 2";
+    </script>
+</body>
+
+</html>

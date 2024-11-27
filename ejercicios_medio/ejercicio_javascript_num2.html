@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio numero 2</title>
+</head>
+
+<body>
+    <!-- 2. Filtrar filas de una tabla
+Escribe un script que filtre las filas de una tabla según el texto ingresado en un campo
+de texto con id="filtro".
+HTML -->
+    <input type="text" id="filtro" placeholder="Buscar..." oninput="filtrarTabla()" />
+    <table id="miTabla" border="1">
+        <tr>
+            <td>Manzana</td>
+        </tr>
+        <tr>
+            <td>Banana</td>
+        </tr>
+        <tr>
+            <td>Naranja</td>
+        </tr>
+    </table>
+    <script>
+        function filtrarTabla() {
+            const filtro = document.querySelector("#filtro").value.toLowerCase();
+            const filas = document.querySelector("#miTabla").rows;
+            let arregloFilas = Array.from(filas);
+            arregloFilas.forEach(fila => {
+                const contenido = fila.textContent.toLowerCase();
+                if (contenido.includes(filtro)) {
+                    fila.style.display = "";
+                } else {
+                    fila.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

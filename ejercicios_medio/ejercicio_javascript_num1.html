@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio numero 1 </title>
+</head>
+
+<body>
+    <!-- 1. Agregar un evento de clic a todas las filas de una tabla
+
+    Dada una tabla con un id="miTabla", escribe un script que agregue un evento de clic
+    a cada fila para que, al hacer clic, se muestre su contenido en una alerta.
+    HTML -->
+    <table id="miTabla" border="1">
+        <tr>
+            <td>Fila 1, Celda 1</td>
+            <td>Fila 1, Celda 2</td>
+        </tr>
+        <tr>
+            <td>Fila 2, Celda 1</td>
+            <td>Fila 2, Celda 2</td>
+        </tr>
+    </table>
+    <script>
+        const filas = document.querySelector("#miTabla").rows;
+        for (let i = 0; i < filas.length; i++) {
+            filas[i].addEventListener("click", () => {
+                alert(filas[i].textContent);
+            });
+        }
+
+    </script>
+</body>
+
+</html>

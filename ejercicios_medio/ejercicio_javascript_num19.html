@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio numero 19</title>
+</head>
+
+<body>
+    <!-- 19. Calcular la edad según la fecha de nacimiento
+    Escribe un script que calcule la edad basándose en una fecha de nacimiento ingresada.
+    HTML -->
+    <input type="date" id="fechaNacimiento" />
+    <button onclick="calcularEdad()">Calcular Edad</button>
+    <div id="edad"></div>
+    <script>
+        // console.log(new Date().getFullYear()); ANIO
+        // console.log(new Date().getMonth()); MES
+        // console.log(new Date().getDate()); DIA
+        function calcularEdad() {
+            const divEdad = document.querySelector("#edad");
+            const fechaNacimiento = new Date(document.querySelector("#fechaNacimiento").value);
+            const anioActual = new Date().getFullYear();
+            const mesActual = new Date().getMonth();
+            const diaActual = new Date().getDay();
+
+            const anioNacimiento = fechaNacimiento.getFullYear();
+            const mesNacimiento = fechaNacimiento.getMonth();
+            const diaNacimiento = fechaNacimiento.getDay();
+
+            let edad = anioActual - anioNacimiento;
+
+            if (mesActual < mesNacimiento || (mesActual == mesNacimiento && diaActual < diaNacimiento)) {
+                edad--;
+            }
+            return divEdad.textContent = `Tu edad es ${edad}`;
+        }
+    </script>
+</body>
+
+</html>

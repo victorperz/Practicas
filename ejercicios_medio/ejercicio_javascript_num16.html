@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio numero 16</title>
+</head>
+
+<body>
+    <!-- 16. Crear un temporizador
+    Crea un temporizador que cuente regresivamente desde un número ingresado en un
+    campo de texto y lo muestre en pantalla.
+    HTML -->
+    <input type="number" id="tiempo" placeholder="Segundos" />
+    <button onclick="iniciarTemporizador()">Iniciar</button>
+    <div id="temporizador"></div>
+    <script>
+        function iniciarTemporizador() {
+
+            let tiempo = Number(document.querySelector("#tiempo").value);
+            const divTemporizador = document.querySelector("#temporizador");
+            console.log(tiempo);
+            const intervalo = setInterval(() => {
+                if (tiempo > 0) {
+                    tiempo--;
+                    divTemporizador.textContent = `Temporizador: ${tiempo}`;
+                } else {
+                    clearInterval(intervalo);
+                    alert("Se acabo el tiempo");
+                }
+            }, 1000);
+
+        }
+
+    </script>
+</body>
+
+</html>

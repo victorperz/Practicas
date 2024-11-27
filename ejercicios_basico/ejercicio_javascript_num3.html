@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio numero 3</title>
+</head>
+
+<body>
+    <!-- 3. Cambiar el color de fondo de una fila
+    Dada una tabla con un `id="miTabla"`, escribe un script que cambie el color de fondo de
+    la segunda fila a "lightblue".
+    HTML -->
+    <table id="miTabla" border="1">
+        <tr>
+            <td>Celda 1</td>
+            <td>Celda 2</td>
+        </tr>
+        <tr>
+            <td>Celda 3</td>
+            <td>Celda 4</td>
+        </tr>
+    </table>
+    <script>
+        let tabla = document.querySelector("#miTabla");
+        tabla.rows[1].style.backgroundColor = "lightblue";
+    </script>
+</body>
+
+</html>

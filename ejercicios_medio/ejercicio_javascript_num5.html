@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio numero 5</title>
+</head>
+
+<body>
+    <!-- 5. Deshabilitar campos de un formulario con un checkbox
+    Escribe un script que deshabilite todos los campos de texto en un formulario cuando se
+    marque un checkbox.
+    HTML -->
+    <input type="checkbox" id="deshabilitar" onchange="controlarCampos()" /> Deshabilitar
+    <form id="miFormulario">
+        <input type="text" placeholder="Campo 1" />
+        <input type="text" placeholder="Campo 2" />
+    </form>
+    <script>
+        function controlarCampos() {
+            const formulario = document.querySelector("#miFormulario");
+            const inputs = Array.from(formulario.getElementsByTagName("input"));
+            const deshabilitar = document.querySelector("#deshabilitar");
+
+            inputs.forEach(input => {
+                if (deshabilitar.checked) {
+                    input.setAttribute("disabled", "true");
+                } else {
+                    input.removeAttribute("disabled");
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

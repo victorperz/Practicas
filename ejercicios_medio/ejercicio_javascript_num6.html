@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio numero 6</title>
+</head>
+
+<body>
+    <!-- 6. Contar palabras en un textarea
+    Escribe un script que cuente las palabras ingresadas en un textarea con
+    id="texto" y las muestre en un div con id="contador".
+    HTML -->
+    <textarea id="texto" oninput="contarPalabras()" placeholder="Escribe algo..."></textarea>
+    <div id="contador">Palabras: 0</div>
+    <script>
+        const textArea = document.querySelector("#texto");
+        const divContador = document.querySelector("#contador");
+        function contarPalabras() {
+            divContador.textContent = `Palabras: ${textArea.value.length}`;
+        }
+    </script>
+</body>
+
+</html>

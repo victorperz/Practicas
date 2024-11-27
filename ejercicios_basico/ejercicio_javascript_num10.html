@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio numero 10</title>
+</head>
+
+<body>
+    <!-- 10. Reiniciar un formulario
+Escribe un script para reiniciar un formulario con `id="miFormulario"` cuando se haga
+clic en un botón.
+HTML -->
+    <form id="miFormulario">
+        <input type="text" placeholder="Nombre" />
+        <input type="email" placeholder="Email" />
+        <button type="button" onclick="reiniciarFormulario()">Reiniciar</button>
+    </form>
+    <script>
+
+        function reiniciarFormulario() {
+            const miFormulario = document.querySelector("#miFormulario");
+            let inputs = miFormulario.getElementsByTagName("input");
+            //Borrado manual
+            for (let i = 0; i < inputs.length; i++) {
+                inputs[i].value = "";
+            }
+            //Borrado por metodo
+            // miFormulario.reset();
+        }
+    </script>
+</body>
+
+</html>

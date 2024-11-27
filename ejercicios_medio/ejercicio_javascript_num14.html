@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio numero 14</title>
+</head>
+
+<body>
+    <!-- 14. Calcular el total de valores en una columna
+    Escribe un script que calcule la suma de todos los valores numéricos en la última
+    columna de una tabla.
+    HTML -->
+    <table id="miTabla" border="1">
+        <tr>
+            <td>Producto A</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>Producto B</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>Producto C</td>
+            <td>15</td>
+        </tr>
+    </table>
+    <button onclick="calcularTotal()">Calcular Total</button>
+    <div id="resultado"></div>
+    <script>
+        function calcularTotal() {
+            // Reduce
+            const miTabla = document.querySelector("#miTabla");
+            const divTabla = document.querySelector("#resultado");
+
+            const filas = Array.from(miTabla.rows);
+            const total = filas.reduce((actual, valor) => {
+                const valorCelda = Number(valor.cells[1].textContent.trim());
+                return actual + valorCelda;
+            }, 0);
+            divTabla.textContent = total;
+
+            // // Manual
+            // const miTabla = document.querySelector("#miTabla");
+            // const resultado = document.querySelector("#resultado");
+            // const filas = Array.from(miTabla.rows);
+            // let total = 0;
+            // filas.forEach(fila => {
+            //     total += Number(fila.cells[1].textContent);
+            // });
+            // resultado.textContent = total;
+        }
+    </script>
+</body>
+
+</html>

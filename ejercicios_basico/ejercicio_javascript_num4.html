@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio numero 4</title>
+</head>
+
+<body>
+    <!-- 4. Leer el valor de un campo de texto
+    Dado un formulario con un campo de texto con `id="nombre"`, escribe un script para
+    mostrar el valor ingresado en una alerta cuando se haga clic en un botón.
+    HTML -->
+    <form>
+        <input type="text" id="nombre" placeholder="Escribe tu nombre" />
+        <button type="button" onclick="mostrarNombre()">Mostrar
+            Nombre</button>
+    </form>
+    <script>
+        function mostrarNombre() {
+            let nombre = document.querySelector("#nombre");
+            alert(nombre.value);
+        }
+    </script>
+</body>
+
+</html>

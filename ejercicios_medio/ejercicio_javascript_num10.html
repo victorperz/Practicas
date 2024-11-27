@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio numero 10</title>
+</head>
+
+<body>
+    <!-- 10. Agregar elementos a una lista
+    Escribe un script que agregue elementos a una lista (ul) con id="miLista" al escribir
+    en un campo de texto y pulsar un botón.
+    HTML -->
+    <input type="text" id="nuevoElemento" placeholder="Nuevo elemento" />
+    <button onclick="agregarElemento()">Agregar</button>
+    <ul id="miLista"></ul>
+    <script>
+        const texto = document.querySelector("#nuevoElemento");
+        const miLista = document.querySelector("#miLista");
+        function agregarElemento() {
+            const li = document.createElement("li");
+            if (texto.value.length < 0) {
+                alert("El contenido esta vacio ingresa un texto");
+                return
+            }
+            li.textContent = texto.value;
+            miLista.appendChild(li);
+            texto.value = "";
+        }
+    </script>
+</body>
+
+</html>

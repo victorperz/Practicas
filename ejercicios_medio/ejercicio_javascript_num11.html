@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio numero 11</title>
+</head>
+
+<body>
+    <!-- 11. Alternar la visibilidad de un elemento
+    Escribe un script que oculte o muestre un elemento con id="miDiv" al hacer clic en
+    un botón.
+    HTML -->
+    <div id="miDiv" style="width: 100px; height: 100px; background-color:lightblue;"></div>
+    <button onclick="alternarVisibilidad()">Alternar Visibilidad</button>
+    <script>
+        const miDiv = document.querySelector("#miDiv");
+
+        function alternarVisibilidad() {
+            if (miDiv.style.display === "none") {
+                miDiv.style.display = "block";
+            } else {
+                miDiv.style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+
+</html>

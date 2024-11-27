@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio numero 8</title>
+</head>
+
+<body>
+    <!-- 8. Crear dinámicamente una tabla
+    Escribe un script que genere una tabla de n x m (número de filas y columnas) en un
+    contenedor con id="contenedorTabla" al ingresar los valores en un formulario.
+    HTML -->
+    <form onsubmit="crearTabla(event)">
+        Filas: <input type="number" id="filas" />
+        Columnas: <input type="number" id="columnas" />
+        <button type="submit">Crear Tabla</button>
+    </form>
+    <div id="contenedorTabla"></div>
+    <script>
+
+        function crearTabla(event) {
+            event.preventDefault();
+            //console.log(event.target);
+            //console.log(event.type);
+
+            const cantFilas = parseInt(document.querySelector("#filas").value, 10);
+            const cantColumnas = parseInt(document.querySelector("#columnas").value, 10);
+
+            if (isNaN(cantColumnas) || isNaN(cantFilas)) {
+                alert("Ingresa un valor numerico para filas y columnas");
+                return
+            }
+            const divTabla = document.querySelector("#contenedorTabla");
+            divTabla.textContent = "";
+            let nuevaTabla = document.createElement("table");
+            nuevaTabla.setAttribute("border", "1");
+
+            for (let f = 0; f < cantFilas; f++) {
+                const fila = document.createElement("tr");
+
+                for (let c = 0; c < cantColumnas; c++) {
+                    const columna = document.createElement("td");
+                    columna.textContent = ` Fila Nº${f} Columna Nº${c} `;
+                    fila.appendChild(columna);
+                }
+                nuevaTabla.appendChild(fila);
+            }
+            divTabla.appendChild(nuevaTabla);
+        }
+
+    </script>
+</body>
+
+</html>

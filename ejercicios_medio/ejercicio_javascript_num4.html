@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio numero 4</title>
+</head>
+
+<body>
+    <!-- 4. Mostrar una lista de opciones seleccionadas
+    Dado un select con id="opciones", escribe un script que muestre las opciones
+    seleccionadas en una alerta al hacer clic en un botón.
+    HTML -->
+    <select id="opciones" multiple>
+        <option value="1">Opción 1</option>
+        <option value="2">Opción 2</option>
+        <option value="3">Opción 3</option>
+    </select>
+    <button onclick="mostrarSeleccion()">Mostrar Selección</button>
+    <script>
+
+        function mostrarSeleccion() {
+            const opciones = document.querySelector("#opciones");
+
+            let seleccionadas = Array.from(opciones.selectedOptions).map((option) => option.textContent);
+
+            if (seleccionadas.length > 0) {
+                alert(`Seleccionastes las siguientes ${seleccionadas}`)
+            } else {
+                alert("No has seleccionado ninguna");
+            }
+        }
+    </script>
+</body>
+
+</html>

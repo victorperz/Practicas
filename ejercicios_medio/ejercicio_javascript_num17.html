@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio numero 17</title>
+</head>
+
+<body>
+    <!-- 17. Validar un formulario antes de enviarlo
+    Escribe un script que valide un formulario con campos obligatorios antes de enviarlo.
+    HTML -->
+    <form onsubmit="return validarFormulario()">
+        <input type="text" id="nombre" placeholder="Nombre" />
+        <input type="email" id="correo" placeholder="Correo" />
+        <button type="submit">Enviar</button>
+    </form>
+    <div id="errores"></div>
+    <script>
+        const nombre = document.querySelector("#nombre").value.trim();
+        const email = document.querySelector("#correo").value.trim();
+        const divErrores = document.querySelector("#errores");
+        document.querySelector("input").addEventListener("click", () => divErrores.textContent = "");
+
+        function validarFormulario() {
+            if (nombre === "" || email === "") {
+                divErrores.textContent = "Los campos Nombre y Correo son obligatorios";
+                divErrores.style.color = "red";
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+
+</html>

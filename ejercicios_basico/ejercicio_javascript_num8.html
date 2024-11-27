@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio numero 8</title>
+</head>
+
+<body>
+    <!-- 8. Habilitar y deshabilitar un botón
+    Escribe un script que habilite un botón con `id="miBoton"` solo si un campo de texto con
+    `id="campoTexto"` no está vacío.
+    HTML -->
+    <!-- <input type="text" id="campoTexto" placeholder="Escribe algo" oninput="habilitarBoton()" /> -->
+    <input type="text" id="campoTexto" placeholder="Escribe algo" />
+    <button id="miBoton" disabled>Enviar</button>
+    <script>
+        window.onload = () => {
+
+
+            const campoTexto = document.querySelector("#campoTexto");
+            const miBoton = document.querySelector("#miBoton");
+
+            campoTexto.addEventListener("input", () => {
+
+                if (campoTexto.value.trim() === "") {
+                    miBoton.setAttribute("disabled", "");
+                } else {
+                    miBoton.removeAttribute("disabled");
+                }
+            });
+
+            // function habilitarBoton() {
+            //         boton.removeAttribute("disabled");
+            // }
+        }
+    </script>
+</body>
+
+</html>

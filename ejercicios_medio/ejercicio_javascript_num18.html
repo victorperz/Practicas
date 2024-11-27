@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio numero 18</title>
+</head>
+
+<body>
+    <!-- 18. Alternar entre dos temas (modo claro y oscuro)
+    Crea un script que permita alternar entre un modo claro y un modo oscuro al hacer clic
+    en un botón.
+    HTML -->
+    <button onclick="alternarTema()">Alternar Tema</button>
+    <div id="contenido" style="padding: 20px;">Este es un contenido de
+        ejemplo.</div>
+    <script>
+        const divContenido = document.querySelector("#contenido");
+        function alternarTema() {
+
+            if (divContenido.style.backgroundColor === "") {
+                divContenido.style.backgroundColor = "gray";
+            } else {
+                divContenido.style.backgroundColor = "";
+            }
+        }
+    </script>
+</body>
+
+</html>

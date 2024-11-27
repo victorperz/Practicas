@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio numero 20</title>
+</head>
+
+<body>
+    <!-- 20. Generar un gráfico básico usando datos de un formulario
+    Dibuja un gráfico de barras usando <div> para representar los valores ingresados en
+    un formulario. HTML -->
+    <input type="number" id="valor" placeholder="Valor" />
+    <button onclick="agregarBarra()">Agregar</button>
+    <div id="grafico" style="display: flex; gap: 5px;"></div>
+    <script>
+        function agregarBarra() {
+            // Obtener el valor ingresado
+            const valor = document.querySelector("#valor").value;
+
+            // Validar que sea un número positivo
+            if (valor === "" || isNaN(valor) || Number(valor) <= 0) {
+                alert("Por favor, ingresa un número válido y positivo.");
+                return;
+            }
+
+            // Crear un nuevo div para la barra
+            const barra = document.createElement("div");
+
+            // Estilizar la barra
+            barra.style.width = "30px";
+            barra.style.height = `${valor}px`; // Altura proporcional al valor
+            barra.style.backgroundColor = "blue";
+            barra.style.textAlign = "center";
+            barra.style.color = "white";
+            barra.style.fontSize = "12px";
+            barra.style.display = "flex";
+            barra.style.justifyContent = "center";
+            barra.style.alignItems = "flex-end";
+
+            // Mostrar el valor encima de la barra
+            barra.textContent = valor;
+
+            // Agregar la barra al gráfico
+            const grafico = document.querySelector("#grafico");
+            grafico.appendChild(barra);
+
+            // Limpiar el input
+            document.querySelector("#valor").value = "";
+        }
+    </script>
+</body>
+
+</html>

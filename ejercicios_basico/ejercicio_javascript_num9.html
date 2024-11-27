@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio numero 9</title>
+</head>
+
+<body>
+    <!-- 9. Eliminar la última fila de una tabla
+    Escribe un script para eliminar la última fila de una tabla con `id="miTabla"`.
+    HTML -->
+    <table id="miTabla" border="1">
+        <tr>
+            <td>Celda 1</td>
+            <td>Celda 2</td>
+        </tr>
+        <tr>
+            <td>Celda 3</td>
+            <td>Celda 4</td>
+        </tr>
+    </table>
+    <button onclick="eliminarUltimaFila()">Eliminar Última Fila</button>
+    <script>
+        function eliminarUltimaFila() {
+            const miTabla = document.querySelector("#miTabla");
+            let numFila = miTabla.rows.length - 1;
+            miTabla.rows[numFila].remove();
+        }
+    </script>
+</body>
+
+</html>

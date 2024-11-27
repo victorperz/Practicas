@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio numero 6</title>
+</head>
+
+<body>
+    <!-- 6. Contar el número de filas en una tabla
+    Escribe un script que muestre el número de filas de una tabla con `id="miTabla"`.
+    HTML -->
+    <table id="miTabla" border="1">
+        <tr>
+            <td>Celda 1</td>
+            <td>Celda 2</td>
+        </tr>
+        <tr>
+            <td>Celda 3</td>
+            <td>Celda 4</td>
+        </tr>
+    </table>
+    <button onclick="contarFilas()">Contar Filas</button>
+    <script>
+        function contarFilas() {
+            let tabla = document.querySelector("#miTabla");
+            console.log(`Cantidad de filas: ${tabla.rows.length}`);
+        }
+    </script>
+</body>
+
+</html>
