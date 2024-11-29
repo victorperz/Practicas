@@ -151,13 +151,13 @@
       for (let char of expr) {
         if (char === "(") balance++;
         if (char === ")") balance--;
-        if (balance < 0) return false; // Más ")" que "("
+        if (balance < 0) return false;
       }
-      return balance === 0; // Deben estar balanceados
+      return balance === 0;
     }
 
     function calcular(valueMostrarOperaciones) {
-      // Resuelve una expresión con paréntesis
+
       const resolverParentesis = (expr) => {
         const operaradores = {
           "+": (a, b) => a + b,
@@ -170,20 +170,19 @@
           ["+", "-"],
         ];
         console.log("Operadores:", expr);
-        // Convertir en array de tokens (números y operadores)
+
         let tokens = [];
         let numero = "";
         for (let caracter of expr) {
           if ((caracter >= "0" && caracter <= "9") || caracter === ".") {
-            numero += caracter; // Construir número
+            numero += caracter;
           } else {
             if (numero) tokens.push(parseFloat(numero)), (numero = "");
-            tokens.push(caracter); // Agregar operador o paréntesis
+            tokens.push(caracter);
           }
         }
         if (numero) tokens.push(parseFloat(numero));
 
-        // Resolver precedencia
         prioridad.forEach((nivel) => {
           console.log(nivel);
           for (let i = 0; i < tokens.length; i++) {
@@ -191,7 +190,7 @@
               console.log(`Nivel de prioridad: ${nivel} y token: ${tokens[i]} include: ${nivel.includes(tokens[i])}`);
 
               let result = operaradores[tokens[i]](tokens[i - 1], tokens[i + 1]);
-              tokens.splice(i - 1, 3, result); // Reemplaza operador y operandos por resultado
+              tokens.splice(i - 1, 3, result);
               i -= 1;
             }
           }
@@ -200,7 +199,6 @@
         return tokens[0];
       };
 
-      // Manejar paréntesis
       while (valueMostrarOperaciones.includes("(")) {
         valueMostrarOperaciones = valueMostrarOperaciones.replace(/\(([^()]+)\)/g, (_, subExpr) =>
           resolverParentesis(subExpr)
