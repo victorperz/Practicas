@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora Victor avanzada</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .calculadora {
+      display: inline-block;
+      text-align: center;
+    }
+
+    .mostrarOperaciones {
+      width: 245px;
+      margin-bottom: 10px;
+      text-align: right;
+      padding: 5px;
+      font-size: 1.2em;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 60px);
+      gap: 5px;
+    }
+
+    .button {
+      padding: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .button.number {
+      background-color: #f0f0f0;
+      color: #000;
+    }
+
+    .button.number:hover {
+      background-color: #e0e0e0;
+    }
+
+    .button.operator {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    .button.operator:hover {
+      background-color: #0056b3;
+    }
+
+    .historial {
+      margin-top: 20px;
+      text-align: left;
+      max-width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .historial h3 {
+      font-size: 1.2em;
+      color: #333;
+    }
+
+    .historial ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .historial li {
+      background: #f9f9f9;
+      margin: 5px 0;
+      padding: 5px;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="calculadora">
+    <input type="text" class="mostrarOperaciones" id="mostrarOperaciones" />
+    <div class="buttons">
+      <button class="button number" onclick="agregarValor('7')">7</button>
+      <button class="button number" onclick="agregarValor('8')">8</button>
+      <button class="button number" onclick="agregarValor('9')">9</button>
+      <button class="button operator" onclick="agregarValor('/')">/</button>
+      <button class="button number" onclick="agregarValor('4')">4</button>
+      <button class="button number" onclick="agregarValor('5')">5</button>
+      <button class="button number" onclick="agregarValor('6')">6</button>
+      <button class="button operator" onclick="agregarValor('*')">*</button>
+      <button class="button number" onclick="agregarValor('1')">1</button>
+      <button class="button number" onclick="agregarValor('2')">2</button>
+      <button class="button number" onclick="agregarValor('3')">3</button>
+      <button class="button operator" onclick="agregarValor('-')">-</button>
+      <button class="button number" onclick="agregarValor('0')">0</button>
+      <button class="button number" onclick="agregarValor('.')">.</button>
+      <button class="button operator" onclick="calcularOperacion()">=</button>
+      <button class="button operator" onclick="agregarValor('+')">+</button>
+      <button class="button operator" onclick="agregarValor('(')">(</button>
+      <button class="button operator" onclick="agregarValor(')')">)</button>
+      <button class="button operator" onclick="clearMostrarOperaciones()">C</button>
+    </div>
+  </div>
+  <div class="historial">
+    <h3>Historial</h3>
+    <ul id="historial"></ul>
+  </div>
+  <script>
+    let historial = [];
+
+    function agregarValor(value) {
+      const mostrarOperaciones = document.getElementById("mostrarOperaciones");
+      mostrarOperaciones.value += value;
+    }
+
+    function clearMostrarOperaciones() {
+      document.getElementById("mostrarOperaciones").value = "";
+    }
+
+    function calcularOperacion() {
+      const mostrarOperaciones = document.getElementById("mostrarOperaciones");
+      const valueMostrarOperaciones = mostrarOperaciones.value;
+
+      try {
+        if (!validarParentesis(valueMostrarOperaciones)) {
+          throw new Error("paréntesis no válidos");
+        }
+        const result = calcular(valueMostrarOperaciones);
+        mostrarOperaciones.value = result;
+
+        historial.push(`${valueMostrarOperaciones} = ${result}`);
+        actualizarHistorial();
+      } catch (e) {
+        mostrarOperaciones.value = `Error ${e.message}`;
+      }
+    }
+    function validarParentesis(expr) {
+      let balance = 0;
+      for (let char of expr) {
+        if (char === "(") balance++;
+        if (char === ")") balance--;
+        if (balance < 0) return false; // Más ")" que "("
+      }
+      return balance === 0; // Deben estar balanceados
+    }
+
+    function calcular(valueMostrarOperaciones) {
+      // Resuelve una expresión con paréntesis
+      const resolverParentesis = (expr) => {
+        const operaradores = {
+          "+": (a, b) => a + b,
+          "-": (a, b) => a - b,
+          "*": (a, b) => a * b,
+          "/": (a, b) => a / b,
+        };
+        const prioridad = [
+          ["*", "/"],
+          ["+", "-"],
+        ];
+        console.log("Operadores:", expr);
+        // Convertir en array de tokens (números y operadores)
+        let tokens = [];
+        let numero = "";
+        for (let caracter of expr) {
+          if ((caracter >= "0" && caracter <= "9") || caracter === ".") {
+            numero += caracter; // Construir número
+          } else {
+            if (numero) tokens.push(parseFloat(numero)), (numero = "");
+            tokens.push(caracter); // Agregar operador o paréntesis
+          }
+        }
+        if (numero) tokens.push(parseFloat(numero));
+
+        // Resolver precedencia
+        prioridad.forEach((nivel) => {
+          console.log(nivel);
+          for (let i = 0; i < tokens.length; i++) {
+            if (nivel.includes(tokens[i])) {
+              console.log(`Nivel de prioridad: ${nivel} y token: ${tokens[i]} include: ${nivel.includes(tokens[i])}`);
+
+              let result = operaradores[tokens[i]](tokens[i - 1], tokens[i + 1]);
+              tokens.splice(i - 1, 3, result); // Reemplaza operador y operandos por resultado
+              i -= 1;
+            }
+          }
+        });
+
+        return tokens[0];
+      };
+
+      // Manejar paréntesis
+      while (valueMostrarOperaciones.includes("(")) {
+        valueMostrarOperaciones = valueMostrarOperaciones.replace(/\(([^()]+)\)/g, (_, subExpr) =>
+          resolverParentesis(subExpr)
+        );
+      }
+      return resolverParentesis(valueMostrarOperaciones);
+    }
+
+    function actualizarHistorial() {
+      const historialElement = document.getElementById("historial");
+      historialElement.innerHTML = "";
+      historial.forEach((valorActual) => {
+        const li = document.createElement("li");
+        li.textContent = valorActual;
+        historialElement.appendChild(li);
+      });
+    }
+  </script>
+</body>
+
+</html>
